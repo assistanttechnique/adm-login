@@ -1,0 +1,10 @@
+# Fins de ligne normalisées dans le dépôt
+* text=auto
+
+# Le script shell doit garder des fins de ligne LF, même s'il est extrait sous Windows
+*.sh text eol=lf
+
+# Fichiers binaires (pas de conversion ni de diff texte)
+*.sqlite3 binary
+*.png binary
+*.jpg binary

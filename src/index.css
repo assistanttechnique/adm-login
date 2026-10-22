@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Palette relevée sur accutivesecurity.com/contact-us */
+@theme {
+  --color-night-950: #150635;
+  --color-night-900: #1e0a48;
+  --color-night-800: #1f0656;
+  --color-brand-800: #2d097d;
+  --color-brand-700: #2f0a80;
+  --color-accent-600: #6943c7;
+  --color-accent-400: #7f5fd9;
+  --color-sky-accent: #6ec1e4;
+  --color-ink: #212529;
+  --color-muted: #7c7c74;
+
+  /* Formulaire HubSpot du site (champs, libellés, bouton) */
+  --color-form-label: #6d6e71;
+  --color-form-text: #33475b;
+  --color-form-field: #f5f8fa;
+  --color-form-border: #cbd6e2;
+  --color-form-focus: rgb(82 168 236 / 0.8);
+  --color-form-placeholder: #bfbfbf;
+  --color-form-button: #575ff2;
+  --color-form-error: #f2545b;
+  --color-form-required: #ff0000;
+
+  /* Pied de page du site */
+  --color-footer-text: #c7c7c7;
+  --color-footer-hover: #428df2;
+
+  /* Espace admin (maquette du dashboard ADM) */
+  --color-lilac: #a77bf3;
+  --color-sidebar-sub: #2a1650;
+  --color-content: #f4f4f6;
+  --color-card-border: #e6e6ea;
+
+  --font-sans: "Noto Sans", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-field: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --shadow-card: 0 12px 40px 0 rgb(0 0 0 / 0.04);
+}
+
+body {
+  @apply bg-night-950 font-sans text-ink antialiased;
+}

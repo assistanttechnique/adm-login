@@ -1,0 +1,9 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets locaux (générés par setup.ps1 / setup.sh à partir de .env.example)
+.env
+
+# Note : db.sqlite3 est volontairement versionnée (compte admin et données de départ)
