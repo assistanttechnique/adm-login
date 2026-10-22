@@ -15,7 +15,7 @@ export const dashboardDemo = {
     { label: 'Scan Field Sensitive', value: 45, color: 'var(--color-lilac)' },
     { label: 'Scan Valued Sensitive', value: 18, color: '#b38bf6' },
   ],
-  lastRunProjects: [{ name: 'CWB-Mask Link Project', date: '2023-02-01', time: '01:13:30' }],
+  lastRunProjects: [{ name: 'CWB-Mask Link Project', date: '2026-10-20', time: '01:13:30' }],
 }
 
 export interface ChartDatum {

@@ -48,16 +48,16 @@ export function validateDiscoveryConfiguration(values: DiscoveryConfiguration): 
 
 // Configurations de départ reprises des maquettes (listes déroulantes des pages Masking et Projects)
 export const INITIAL_DISCOVERY_CONFIGURATIONS: SavedDiscoveryConfiguration[] = [
-  'CSV DEMO',
-  'Demo Discovery',
-  'Test',
-  'Transact Discovery',
-].map((name, index) => ({
+  // Auteur et dates de démonstration
+  { name: 'CSV DEMO', modifiedDate: '2026-06-12 10:24:05' },
+  { name: 'Demo Discovery', modifiedDate: '2026-07-08 14:32:51' },
+  { name: 'Test', modifiedDate: '2026-08-19 09:15:37' },
+  { name: 'Transact Discovery', modifiedDate: '2026-09-30 21:16:45' },
+].map(({ name, modifiedDate }, index) => ({
   ...EMPTY_DISCOVERY_CONFIGURATION,
   id: index + 1,
   name,
   lastScanRequest: '',
-  // Auteur et date de démonstration
   modifiedBy: 'admin',
-  modifiedDate: '2025-01-30 21:16:45',
+  modifiedDate,
 }))

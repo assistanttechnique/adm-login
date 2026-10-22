@@ -1,4 +1,4 @@
-// Date au format de la maquette ADM : 2025-03-20 21:35:12
+// Date au format de la maquette ADM : 2026-07-20 21:35:12
 export function formatDateTime(date: Date): string {
   const pad = (n: number) => String(n).padStart(2, '0')
   return (
