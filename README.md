@@ -15,6 +15,10 @@ Reproduction de l'interface d'administration ADM (découverte et masquage de don
 
 ## Installation après clonage
 
+> **Windows** : clonez le dépôt dans un chemin court (par exemple `C:\dev\adm-login` ou `Documents\adm-login`).
+> Certaines dépendances Python ont des chemins de fichiers longs, et l'installation échoue au-delà de 260 caractères
+> si les [chemins longs](https://learn.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) ne sont pas activés.
+
 Le script crée l'environnement Python, installe les dépendances, génère `backend/.env` avec une clé secrète propre à la machine,
 applique les migrations et installe les dépendances Node.
 
