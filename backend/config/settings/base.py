@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if host.strip()]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -82,6 +82,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+# Fichiers statiques de l'admin Django, rassemblés par `collectstatic` (servis par l'hébergeur)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Build du frontend React servi par Django en production (`npm run build:deploy`)
+FRONTEND_DIST = BASE_DIR / "frontend_dist"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

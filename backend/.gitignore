@@ -6,4 +6,8 @@ __pycache__/
 # Secrets locaux (générés par setup.ps1 / setup.sh à partir de .env.example)
 .env
 
-# Note : db.sqlite3 est volontairement versionnée (compte admin et données de départ)
+# Fichiers statiques rassemblés par `collectstatic` (régénérés sur le serveur)
+staticfiles/
+
+# Notes : db.sqlite3 est volontairement versionnée (compte admin et données de départ),
+# ainsi que frontend_dist/ (build React servi par Django sur l'hébergeur, voir deploy/PYTHONANYWHERE.md)

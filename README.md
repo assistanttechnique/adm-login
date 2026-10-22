@@ -73,9 +73,16 @@ Seuls les comptes de rôle **admin** peuvent se connecter à l'interface. Les au
 
 Repartir d'une base vierge : supprimer `backend/db.sqlite3`, puis `python manage.py migrate` et `python manage.py createsuperuser`.
 
+## Mise en ligne
+
+Le site peut être publié sur PythonAnywhere (gratuit, une seule adresse pour le frontend et l'API) :
+voir **[deploy/PYTHONANYWHERE.md](deploy/PYTHONANYWHERE.md)**. En production, Django sert le build du frontend
+(`backend/frontend_dist/`, régénéré par `npm run build:deploy`) et l'admin Django est sur `/django-admin/`.
+
 ## Commandes utiles
 
 ```bash
+npm run build:deploy   # build du frontend servi par Django en production (backend/frontend_dist/)
 npm run build      # vérification TypeScript + build de production (dist/)
 npm run lint       # oxlint
 cd backend && .venv/Scripts/python manage.py test   # tests backend (macOS / Linux : .venv/bin/python)
