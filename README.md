@@ -78,6 +78,7 @@ Repartir d'une base vierge : supprimer `backend/db.sqlite3`, puis `python manage
 Le site peut être publié sur PythonAnywhere (gratuit, une seule adresse pour le frontend et l'API) :
 voir **[deploy/PYTHONANYWHERE.md](deploy/PYTHONANYWHERE.md)**. En production, Django sert le build du frontend
 (`backend/frontend_dist/`, régénéré par `npm run build:deploy`) et l'admin Django est sur `/django-admin/`.
+Une fois le webhook GitHub configuré, **chaque push sur `main` met le site en ligne à jour automatiquement**.
 
 ## Commandes utiles
 
@@ -99,6 +100,7 @@ cd backend && .venv/Scripts/python manage.py test   # tests backend (macOS / Lin
 | `/api/admin/users/` | CRUD des utilisateurs (rôle admin requis) |
 | `GET /api/admin/audit-logs/files/` | Fichiers de journal (un par jour) |
 | `GET /api/admin/audit-logs/?date=AAAA-MM-JJ` | Entrées d'un jour + contrôle d'intégrité de la chaîne |
+| `POST /api/deploy/github/` | Webhook GitHub de déploiement automatique (signature HMAC, actif seulement si `GITHUB_WEBHOOK_SECRET` est défini) |
 
 ## Structure
 

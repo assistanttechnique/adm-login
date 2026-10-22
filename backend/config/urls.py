@@ -4,6 +4,7 @@ Configuration des URLs du projet.
 from django.contrib import admin
 from django.urls import include, path, re_path
 
+from .deploy_hook import github_deploy
 from .spa import spa
 
 urlpatterns = [
@@ -14,6 +15,8 @@ urlpatterns = [
     # Administration applicative (réservée au rôle admin) : utilisateurs et journal d'audit
     path("api/admin/", include("accounts.admin_urls")),
     path("api/admin/audit-logs/", include("audit.urls")),
+    # Déploiement automatique déclenché par GitHub (signature HMAC obligatoire)
+    path("api/deploy/github/", github_deploy, name="github-deploy"),
     # Tout le reste (hors API et fichiers statiques) : frontend React compilé
     re_path(r"^(?!api/|django-admin/|static/)(?P<path>.*)$", spa),
 ]

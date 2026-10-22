@@ -59,13 +59,21 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 # --- Base de données ---
-# SQLite pour démarrer ; à remplacer par PostgreSQL via variables d'environnement plus tard
+# SQLite pour démarrer ; à remplacer par PostgreSQL via variables d'environnement plus tard.
+# DJANGO_DB_PATH permet de placer la base hors du dépôt Git (sur le serveur : les mises à jour
+# automatiques par `git pull` ne doivent jamais écraser les comptes ni le journal d'audit).
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": os.environ.get("DJANGO_DB_PATH") or BASE_DIR / "db.sqlite3",
     }
 }
+
+# --- Déploiement automatique (webhook GitHub, voir config/deploy_hook.py) ---
+# Désactivé tant que le secret n'est pas défini dans .env
+GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", "")
+DEPLOY_BRANCH = "refs/heads/main"
+DEPLOY_SCRIPT = BASE_DIR.parent / "deploy" / "pythonanywhere_update.sh"
 
 AUTH_USER_MODEL = "accounts.User"
 
