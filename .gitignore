@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Configuration Docker de la machine (créée à partir de .env.docker.example, jamais versionnée)
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

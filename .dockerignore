@@ -1,0 +1,13 @@
+# Fichiers exclus de l'image Docker (dépendances recompilées, secrets locaux, builds générés)
+.git
+node_modules
+dist
+.env
+.env.*
+!.env.docker.example
+backend/.venv
+backend/.env
+backend/staticfiles
+backend/frontend_dist
+**/__pycache__
+**/*.pyc

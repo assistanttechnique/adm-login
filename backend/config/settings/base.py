@@ -7,9 +7,22 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+def read_secret_key():
+    """Clé secrète : variable DJANGO_SECRET_KEY, sinon fichier DJANGO_SECRET_KEY_FILE (volume Docker)."""
+    key = os.environ.get("DJANGO_SECRET_KEY")
+    key_file = os.environ.get("DJANGO_SECRET_KEY_FILE")
+    if not key and key_file and Path(key_file).is_file():
+        key = Path(key_file).read_text(encoding="utf-8").strip()
+    if not key:
+        raise ImproperlyConfigured("DJANGO_SECRET_KEY is not set (see backend/.env.example).")
+    return key
+
+
+SECRET_KEY = read_secret_key()
 
 ALLOWED_HOSTS = [host.strip() for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if host.strip()]
 
@@ -31,6 +44,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    # Sert STATIC_ROOT (admin Django) en production, sans serveur web séparé
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
